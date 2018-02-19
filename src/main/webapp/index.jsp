@@ -35,8 +35,8 @@
                                 <input type="text" name="usuario" maxlength="30" class="form-control" placeholder="máx. 30"  required/>
                                 <br>
                                 <label align="center" for="login">Password</label>
-                                <input type="pass" name="password" maxlength="30" class="form-control" placeholder="máx. 30"  required/>
-                                <button type="submit">Empezar</button>
+                                <input type="password" name="pass" maxlength="30" class="form-control" placeholder="máx. 30"  required/>
+                                <button type="submit" class="btn btn-primary btn-lg">Empezar</button>
                             </form>
                         </div>            
                     </div>
