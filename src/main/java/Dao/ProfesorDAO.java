@@ -89,5 +89,24 @@ public class ProfesorDAO {
         return profesor;
 
     }
+   
+   public ArrayList<Profesor> getAllProfesores() throws SQLException {
+        ArrayList<Profesor> profesores = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from profesor");
+        while (rs.next()) {
+            Profesor c = new Profesor();
+            c.setId_profesor(rs.getInt("id_profesor"));
+            c.setNombre_profesor(rs.getString("nombre_profesor"));
+            c.setContacto_profesor(rs.getString("contacto_profesor"));
+            c.setDescripcion_profesor(rs.getString("descripcion_profesor"));
+            c.setId_curso(rs.getInt("id_curso"));
+            c.setUsuario_profesor(rs.getString("usuario_profesor"));
+            c.setPassword_profesor(rs.getString("password_profesor"));
+            profesores.add(c);
+        }
+        return profesores;
+    }
+
 
 }
