@@ -34,11 +34,11 @@ public class ListaAsistencia extends HttpServlet{
          try {
              
              
-            EstudianteDAO obj = new EstudianteDAO();
+            AsistenciaDAO obj = new AsistenciaDAO();
             Profesor p = (Profesor) request.getSession().getAttribute("profesor");
             
             
-            ArrayList<Estudiante> lista = (ArrayList<Estudiante>) obj.getAsistenciaID(p.getId_curso());
+            ArrayList<Estudiante> lista = (ArrayList<Estudiante>) obj.getEstudiantesIDCurso(p.getId_curso());
 
             request.setAttribute("listaCurso", lista);
 
