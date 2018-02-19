@@ -29,20 +29,7 @@
 
 
 
-                        <form class="form-inline" action="BuscarProfesor" method="POST">
-
-                            <div class="form-group">
-                                <label for="idequipo">ID Profesor:</label>
-                                <input  class="form-control" name="id_profesor">
-                            </div>
-
-                            <br>
-                            <div class="span12">&nbsp;</div>
-
-                            <button type="submit" class="btn btn-default" name="Enviar">Buscar</button>
-                        
-
-
+                     
 
 
 
