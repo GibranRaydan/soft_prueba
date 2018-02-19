@@ -9,6 +9,7 @@ package Controller;
 import Dao.ProfesorDAO;
 import Model.Profesor;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -67,13 +68,25 @@ public class BuscarProfesor extends HttpServlet {
                               
             ProfesorDAO obj = new ProfesorDAO();
             Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+            response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NewServlet1</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet NewServlet1 at " + p.getId_profesor()+","+p.getNombre_profesor() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
             
-            
-            ArrayList<Profesor> lista = (ArrayList<Profesor>) obj.getProfesorID(p.getId_profesor());
-
-            request.setAttribute("listaProfesorBuscar", lista);
-
-            request.getRequestDispatcher("perfil_profesor.jsp").forward(request, response);
+//            ArrayList<Profesor> lista = (ArrayList<Profesor>) obj.getProfesorID(p.getId_profesor());
+//
+//            request.setAttribute("listaProfesorBuscar", lista);
+//
+//            request.getRequestDispatcher("perfil_profesor.jsp").forward(request, response);
 
         } catch (SQLException ex) {
             Logger.getLogger(BuscarProfesor.class.getName()).log(Level.SEVERE, null, ex);
