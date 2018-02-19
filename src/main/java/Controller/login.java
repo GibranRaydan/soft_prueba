@@ -61,32 +61,19 @@ public class login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String usuario=(String) request.getAttribute("usuario");
-            String pass=(String) request.getAttribute("pass");
+            String usuario=(String) request.getParameter("usuario");
+            String pass=(String) request.getParameter("pass");
             ProfesorDAO p=new ProfesorDAO();
             ArrayList<Profesor> profesores=p.getAllProfesores();
-            response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet NewServlet at " + usuario + ","+ pass+ "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-//            for(Profesor profe:profesores){
-//                if(profe.getUsuario_profesor().equals(usuario) && profe.getPassword_profesor().equals(pass)){
-//                    request.getSession().setAttribute("profesor", profe);
-//                    response.sendRedirect("menu.jsp");
-//                }
-//            }
-//            request.setAttribute("respuesta", "usuario o password incorrecto");
-//            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-//            rd.forward(request, response);
+            for(Profesor profe:profesores){
+                if(profe.getUsuario_profesor().equals(usuario) && profe.getPassword_profesor().equals(pass)){
+                    request.getSession().setAttribute("profesor", profe);
+                    response.sendRedirect("menu.jsp");
+                }
+            }
+            request.setAttribute("respuesta", "usuario o password incorrecto");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+            rd.forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
