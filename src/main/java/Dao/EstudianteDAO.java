@@ -28,7 +28,6 @@ public class EstudianteDAO {
 
     public ArrayList<Estudiante> getAsistenciaID(int a) throws SQLException, URISyntaxException {
         ArrayList<Estudiante> estudiante = null;
-        boolean result = false;
         String query = "SELECT * FROM estudiante where id_estudiante= " + a;
         Connection connection = DbUtil.getConnection();
         try {

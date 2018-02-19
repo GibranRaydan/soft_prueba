@@ -37,8 +37,6 @@ public class ListaAsistencia extends HttpServlet{
              
             AsistenciaDAO obj = new AsistenciaDAO();
             Profesor p = (Profesor) request.getSession().getAttribute("profesor");
-            
-            
 
             ArrayList<Estudiante> lista = (ArrayList<Estudiante>) obj.getEstudiantesIDCurso(p.getId_curso());
 
