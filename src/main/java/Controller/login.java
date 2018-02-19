@@ -61,14 +61,15 @@ public class login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String usuario=(String) request.getParameter("usuario");
-            String pass=(String) request.getParameter("pass");
-            ProfesorDAO p=new ProfesorDAO();
-            ArrayList<Profesor> profesores=p.getAllProfesores();
-            for(Profesor profe:profesores){
-                if(profe.getUsuario_profesor().equals(usuario) && profe.getPassword_profesor().equals(pass)){
+            String usuario = (String) request.getParameter("usuario");
+            String pass = (String) request.getParameter("pass");
+            ProfesorDAO p = new ProfesorDAO();
+            ArrayList<Profesor> profesores = p.getAllProfesores();
+            for (Profesor profe : profesores) {
+                if (profe.getUsuario_profesor().equals(usuario) && profe.getPassword_profesor().equals(pass)) {
                     request.getSession().setAttribute("profesor", profe);
-                    response.sendRedirect("menu.jsp");
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/menu.jsp");
+                    rd.forward(request, response);
                 }
             }
             request.setAttribute("respuesta", "usuario o password incorrecto");
