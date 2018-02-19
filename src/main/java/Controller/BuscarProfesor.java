@@ -50,15 +50,11 @@ public class BuscarProfesor extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-                              
+              
             ProfesorDAO obj = new ProfesorDAO();
             Profesor p = (Profesor) request.getSession().getAttribute("profesor");
-            
-            
             ArrayList<Profesor> lista = (ArrayList<Profesor>) obj.getProfesorID(p.getId_profesor());
-
             request.setAttribute("listaProfesorBuscar", lista);
-
             request.getRequestDispatcher("perfil_profesor.jsp").forward(request, response);
 
         } catch (SQLException ex) {

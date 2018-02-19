@@ -11,6 +11,7 @@ import Model.Asistencia;
 import Model.Estudiante;
 import Model.Profesor;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -39,7 +40,20 @@ public class ListaAsistencia extends HttpServlet{
             
             
             ArrayList<Estudiante> lista = (ArrayList<Estudiante>) obj.getAsistenciaID(p.getId_curso());
-
+            response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NewServlet1</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet NewServlet1 at " + lista.get(0).getNombre_estudiante() +"," +lista.get(1).getNombre_estudiante()+"</h1>");
+            
+            out.println("</body>");
+            out.println("</html>");
+        }
             request.setAttribute("listaCurso", lista);
 
             request.getRequestDispatcher("addAsistencia.jsp").forward(request, response);
