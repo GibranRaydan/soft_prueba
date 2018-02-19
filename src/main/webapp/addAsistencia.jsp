@@ -1,4 +1,4 @@
-<%@page import="Model.Profesor"%>
+<%@page import="Model.Estudiante"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,79 +24,30 @@
                     <h1>Lista Asistencia</h1>
                     <p></p>
                     <hr>
-                    <div class="container">   
-                        <form class="form-inline" action="addAsistencia" method="POST">
-                            <div class="form-group">
-                                <label for="idAsistencia">ID :</label>
-                                <input  class="form-control" name="idAsistencia">
-                            </div>
-                            <div class="form-group">
-                                <label for="idCurso">Curso:</label>
-                                <input  class="form-control" name="idCurso">
-                            </div>
-                            <div class="form-group">
-                                <label for="idEstudiante">Estudiante:</label>
-                                <input  class="form-control" name="idEstudiante">
-                            </div>
-                            <div class="span12">&nbsp;</div>
-                            <div class="form-group">
-                                <label for="fechaC">Fecha Compra:</label>
-                                <input  class="form-control" name="fechaC">
-                            </div>
-                            <div class="form-group">
-                                <label for="prestaso">Ultimo Mant.:</label>
-                                <input  class="form-control" name="mantenimiento">
-                            </div>
-                            <div class="form-group">
-                                <label for="tipo">Estado</label>
-                                <select class="form-control" name="estado">
-                                    <option>Excelente</option>
-                                    <option>Bueno</option>
-                                    <option>Regula</option>
-                                    <option>Malo</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="tipo">Prestado</label>
-                                <select class="form-control" name="prestado">
-                                    <option>True</option>
-                                    <option>False</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="tipo">Categoria</label>
-                                <select class="form-control" name="categoria">
-                                     <%
-                                        if (request.getAttribute("categoria") != null) {
-                                            ArrayList<Categoria> array = (ArrayList<Categoria>) request.getAttribute("categoria");
-                                            for (Categoria a : array) {
-                                    %> 
-                                    <option value="<%=a.getNombre()%>"><%=a.getNombre()%></option> 
-                                    <%      }
-                                        }
-                                    %> 
-                                </select>
-                            </div>
-                                <br>
-                                <br>
-                                
-                            <div class="form-group">
-                                <label for="tipo">Calificación</label>
-                                <select class="form-control" name="calificacion">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
+                    <table class="table table-striped">
+                            <tr>
+                                <th>ID Estudiante</th>
+                                <th>Nombre Estudiante</th>
+                            
+                            </tr>
+                            <% if (request.getAttribute("listaCurso") != null) {
+                                    ArrayList<Estudiante> list = (ArrayList<Estudiante>) request.getAttribute("listaCurso");
+                                    if (list != null)
+                                        for (Estudiante estudiante : list) {
+                            %>
+                            <tr>
+                                <td><%=estudiante.getId_estudiante()%></td>
+                                <td><%=estudiante.getNombre_estudiante()%></td>
+                            
 
-
-                            <br>
-                            <div class="span12">&nbsp;</div>
-                            <button type="submit" class="btn btn-default" name="Enviar">Enviar</button>
-                        </form>
-                    </div>
+                                <td>
+                                    <input type="checkbox" name="asistencia" value="no"> 
+                                </td>
+                            </tr>
+                            <% }
+                                }
+                            %>
+                        </table>
                 </div>
 
             </div>

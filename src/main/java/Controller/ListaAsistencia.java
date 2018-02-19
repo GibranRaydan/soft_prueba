@@ -5,7 +5,10 @@
  */
 package Controller;
 import Dao.AsistenciaDAO;
+import Dao.ProfesorDAO;
 import Model.Asistencia;
+import Model.Estudiante;
+import Model.Profesor;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
@@ -42,18 +45,19 @@ public class ListaAsistencia extends HttpServlet{
             throws ServletException, IOException {
    
          try {
-            int id_curso = Integer.parseInt(request.getParameter("id_curso"));
-            int id_estudiante = Integer.parseInt(request.getParameter("id_estudiante"));
-            String fecha = (String) request.getParameter("fecha");
-            int vino = Integer.parseInt(request.getParameter("vino"));
+             
+             
+            ProfesorDAO obj = new ProfesorDAO();
+            Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+            
+            
+            ArrayList<Profesor> lista = (ArrayList<Profesor>) obj.getProfesorID(p.getId_curso());
+
+            request.setAttribute("listaCurso", lista);
+
+            request.getRequestDispatcher("addAsistencia.jsp").forward(request, response);
+            
            
-
-            AsistenciaDAO dao = new AsistenciaDAO();
-            Asistencia tab = new Asistencia(id_estudiante, fecha, vino, id_curso, id_estudiante);
-
-            dao.addAsistencia(tab);
-
-            response.sendRedirect("addAsistencia");
 
         } catch (SQLException ex) {
             Logger.getLogger(ListaAsistencia.class.getName()).log(Level.SEVERE, null, ex);

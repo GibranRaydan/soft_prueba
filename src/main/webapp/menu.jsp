@@ -30,7 +30,7 @@
                 </a>
                 <br>
                 <br>
-                <a  href="##">
+                <a  href="ListaAsistencia">
                     <button type="button" class="btn tm-bordered-btn pull-xs-center">Asistencia Curso</button>
                 </a>
                 <br>
