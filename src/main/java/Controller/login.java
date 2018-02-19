@@ -67,7 +67,7 @@ public class login extends HttpServlet {
             for(Profesor profe:profesores){
                 if(profe.getUsuario_profesor().equals(usuario) && profe.getPassword_profesor().equals(pass)){
                     request.getSession().setAttribute("profesor", profe);
-                    response.sendRedirect("/menu.jsp");
+                    response.sendRedirect("/perfil_profesor.jsp");
                 }
             }
             request.setAttribute("respuesta", "usuario o password incorrecto");

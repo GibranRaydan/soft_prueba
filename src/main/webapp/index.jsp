@@ -23,7 +23,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="tm-wrapper-center">
                             <h1 class="tm-section-intro-title">Bienvenido</h1>
-                            <form align="center" action="Login" method="GET" class="tm-contact-form"> 
+                            <form align="center" action="Login" method="POST" class="tm-contact-form"> 
                                 <%
                                 if (request.getAttribute("respuesta") != null) {
                                     %><h6 class="tm-2-col-text-description">Usuario o Contrasena invalidos</h6><%
@@ -36,7 +36,7 @@
                                 <br>
                                 <label align="center" for="login">Password</label>
                                 <input type="pass" name="password" maxlength="30" class="form-control" placeholder="máx. 30"  required/>
-                                <button type="submit" class="btn tm-bordered-btn pull-xs-center">Empezar</button>
+                                <button type="submit">Empezar</button>
                             </form>
                         </div>            
                     </div>
