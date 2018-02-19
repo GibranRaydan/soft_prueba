@@ -13,11 +13,11 @@ public class Asistencia {
 
     private int id_asistencia;
     private String fecha;
-    private boolean vino;
+    private int vino;
     private int id_curso;
     private int id_estudiante;
 
-    public Asistencia(int id_asistencia, String fecha, boolean vino, int id_curso, int id_estudiante) {
+    public Asistencia(int id_asistencia, String fecha, int vino, int id_curso, int id_estudiante) {
         this.id_asistencia = id_asistencia;
         this.fecha = fecha;
         this.vino = vino;
@@ -44,11 +44,11 @@ public class Asistencia {
         this.fecha = fecha;
     }
 
-    public boolean getVino() {
+    public int getVino() {
         return vino;
     }
 
-    public void setVino(boolean vino) {
+    public void setVino(int vino) {
         this.vino = vino;
     }
 
