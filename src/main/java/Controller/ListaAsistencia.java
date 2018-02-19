@@ -54,9 +54,9 @@ public class ListaAsistencia extends HttpServlet{
             out.println("</body>");
             out.println("</html>");
         }
-            request.setAttribute("listaCurso", lista);
-
-            request.getRequestDispatcher("addAsistencia.jsp").forward(request, response);
+//            request.setAttribute("listaCurso", lista);
+//
+//            request.getRequestDispatcher("addAsistencia.jsp").forward(request, response);
             
            
 
