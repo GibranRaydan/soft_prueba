@@ -26,6 +26,8 @@
                     <p></p>
                     <hr>
                     
+                    <form class="form-inline" action="ListaAsistencia" method="POST">
+                    
                     <table class="table table-striped">
                             <tr>
                                 <th>ID Estudiante</th>
@@ -50,6 +52,8 @@
                                 }
                             %>
                         </table>
+                        
+                        </form>
                 </div>
 
             </div>
