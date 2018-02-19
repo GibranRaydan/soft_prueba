@@ -25,7 +25,7 @@
         
 
             <div class="col-md-4">
-                <a class href="perfil_profesor.jsp">
+                <a class href="BuscarProfesor">
                     <button type="button" class="btn tm-bordered-btn pull-xs-center"> Ver Perfil</button>
                 </a>
                 <br>
