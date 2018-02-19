@@ -52,6 +52,7 @@
                                 }
                             %>
                         </table>
+                        <button type="submit" class="btn btn-default" name="Enviar">Enviar</button>
                         
                         </form>
                 </div>
