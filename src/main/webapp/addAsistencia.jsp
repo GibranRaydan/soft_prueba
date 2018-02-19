@@ -25,6 +25,7 @@
                     <h1>Lista Asistencia</h1>
                     <p></p>
                     <hr>
+                    
                     <table class="table table-striped">
                             <tr>
                                 <th>ID Estudiante</th>
