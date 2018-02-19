@@ -5,6 +5,7 @@
  */
 package Controller;
 import Dao.AsistenciaDAO;
+import Dao.EstudianteDAO;
 import Dao.ProfesorDAO;
 import Model.Asistencia;
 import Model.Estudiante;
@@ -33,11 +34,11 @@ public class ListaAsistencia extends HttpServlet{
          try {
              
              
-            ProfesorDAO obj = new ProfesorDAO();
+            EstudianteDAO obj = new EstudianteDAO();
             Profesor p = (Profesor) request.getSession().getAttribute("profesor");
             
             
-            ArrayList<Profesor> lista = (ArrayList<Profesor>) obj.getProfesorID(p.getId_curso());
+            ArrayList<Estudiante> lista = (ArrayList<Estudiante>) obj.getAsistenciaID(p.getId_curso());
 
             request.setAttribute("listaCurso", lista);
 
