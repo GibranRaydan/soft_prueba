@@ -21,26 +21,27 @@
             <h1 class="col-md-4">Menu Principal</h1>
             <div class="span12">&nbsp;</div>
             <div class="span12">&nbsp;</div>
+            <div class="span12">&nbsp;</div>
         
 
             <div class="col-md-4">
                 <a class href="##">
-                    <button type="button" class="btn btn-primary btn-lg"> Ver Perfil</button>
+                    <button type="button" class="btn tm-bordered-btn pull-xs-center"> Ver Perfil</button>
                 </a>
                 <br>
                 <br>
                 <a  href="##">
-                    <button type="button" class="btn btn-success btn-lg">Asistencia Curso</button>
+                    <button type="button" class="btn tm-bordered-btn pull-xs-center">Asistencia Curso</button>
                 </a>
                 <br>
                 <br>
                 <a  href="##">
-                    <button   type="button" class="btn btn-danger btn-lg">Notas Curso</button>  
+                    <button   type="button" class="btn tm-bordered-btn pull-xs-center">Notas Curso</button>  
                 </a>
                 <br>
                 <br> 
                 <a  href="#">
-                    <button   type="button" class="btn btn-primary btn-lg">Observador</button>  
+                    <button   type="button" class="btn tm-bordered-btn pull-xs-center">Observador</button>  
                 </a>
                 
             </div>
