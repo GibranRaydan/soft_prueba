@@ -18,8 +18,6 @@
         <div class="container-fluid">
 
             <div class="row"> 
-
-                <section class="tm-section-intro">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="tm-wrapper-center">
                             <h1 class="tm-section-intro-title">Bienvenido</h1>
@@ -36,11 +34,11 @@
                                 <br>
                                 <label align="center" for="login">Password</label>
                                 <input type="password" name="pass" maxlength="30" class="form-control" placeholder="máx. 30"  required/>
-                                <button type="submit" class="btn btn-primary btn-lg">Empezar</button>
+                                <br><br>
+                                <button type="submit" class="btn btn-primary btn-lg">Ingresar</button>
                             </form>
                         </div>            
-                    </div>
-                </section>    
+                    </div>   
             </div>
         </div>      
     </body>
