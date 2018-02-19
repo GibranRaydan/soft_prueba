@@ -15,7 +15,7 @@
     </head>
     <body>
 
-        <%@include file="header.jsp" %>
+        <%--  <%@include file="header.jsp" %> --%>
         <div class="container-fluid text-center">    
             <div class="row content">
                 <div class="col-sm-2 sidenav">
@@ -29,20 +29,7 @@
 
 
 
-                        <form class="form-inline" action="BuscarProfesor" method="POST">
-
-                            <div class="form-group">
-                                <label for="idequipo">ID Profesor:</label>
-                                <input  class="form-control" name="id_profesor">
-                            </div>
-
-                            <br>
-                            <div class="span12">&nbsp;</div>
-
-                            <button type="submit" class="btn btn-default" name="Enviar">Buscar</button>
-                        </form>
-
-
+                     
 
 
 
@@ -77,6 +64,11 @@
                         %>
 
 
+                        <br>
+                <br>
+                <a  href="menu.jsp">
+                    <button type="button" class="btn tm-bordered-btn pull-xs-center">Volver</button>
+                </a>
                     </div>
 
                 </div>
