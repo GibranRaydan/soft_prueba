@@ -29,7 +29,7 @@
 
 
 
-                        <form class="form-inline" action="BuscarProfesor" method="POST">
+<!--                        <form class="form-inline" action="BuscarProfesor" method="POST">
 
                             <div class="form-group">
                                 <label for="idequipo">ID Profesor:</label>
@@ -40,7 +40,7 @@
                             <div class="span12">&nbsp;</div>
 
                             <button type="submit" class="btn btn-default" name="Enviar">Buscar</button>
-                        </form>
+                        </form>-->
 
 
 

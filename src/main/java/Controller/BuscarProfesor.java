@@ -66,9 +66,10 @@ public class BuscarProfesor extends HttpServlet {
          try {
                               
             ProfesorDAO obj = new ProfesorDAO();
-            int id_profesor = Integer.parseInt(request.getParameter("id_profesor"));
+            Profesor p = (Profesor) request.getSession().getAttribute("profesor");
             
-            ArrayList<Profesor> lista = (ArrayList<Profesor>) obj.getProfesorID(id_profesor);
+            
+            ArrayList<Profesor> lista = (ArrayList<Profesor>) obj.getProfesorID(p.getId_profesor());
 
             request.setAttribute("listaProfesorBuscar", lista);
 
