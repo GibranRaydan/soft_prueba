@@ -5,11 +5,10 @@
  */
 package Controller;
 
+
 import Dao.ProfesorDAO;
 import Model.Profesor;
-import com.google.gson.Gson;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -35,6 +34,8 @@ public class BuscarProfesor extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+  
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -47,25 +48,7 @@ public class BuscarProfesor extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        try {
-            response.setContentType("text/html;charset=UTF-8");
-
-            ProfesorDAO obj = new ProfesorDAO();
-
-            ArrayList<Profesor> lista = (ArrayList<Profesor>) obj.getProfesorID(1);
-
-            Gson gson = new Gson();
-            String sa = gson.toJson(lista);
-            try (PrintWriter out = response.getWriter()) {
-                out.println(sa);
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(BuscarProfesor.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(BuscarProfesor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     }
 
     /**
@@ -79,8 +62,23 @@ public class BuscarProfesor extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+   
+         try {
+                              
+            ProfesorDAO obj = new ProfesorDAO();
+            int id_profesor = Integer.parseInt(request.getParameter("id_profesor"));
+            
+            ArrayList<Profesor> lista = (ArrayList<Profesor>) obj.getProfesorID(id_profesor);
 
-        
+            request.setAttribute("listaProfesorBuscar", lista);
+
+            request.getRequestDispatcher("perfil_profesor.jsp").forward(request, response);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarProfesor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(BuscarProfesor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
