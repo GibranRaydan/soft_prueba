@@ -42,7 +42,7 @@
                             
 
                                 <td>
-                                    <input type="checkbox" name="asistencia" value="<%=estudiante.getId_estudiante()%> 
+                                    <input type="checkbox" name="asistencia" value="<%=estudiante.getId_estudiante()%>" >
                                 </td>
                             </tr>
                             <% }
