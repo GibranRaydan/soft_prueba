@@ -11,6 +11,7 @@ import Model.Asistencia;
 import Model.Estudiante;
 import Model.Profesor;
 import java.io.IOException;
+
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -38,11 +39,13 @@ public class ListaAsistencia extends HttpServlet{
             Profesor p = (Profesor) request.getSession().getAttribute("profesor");
             
             
+
             ArrayList<Estudiante> lista = (ArrayList<Estudiante>) obj.getEstudiantesIDCurso(p.getId_curso());
 
             request.setAttribute("listaCurso", lista);
 
             request.getRequestDispatcher("addAsistencia.jsp").forward(request, response);
+
             
            
 
