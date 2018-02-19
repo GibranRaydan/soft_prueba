@@ -15,75 +15,93 @@
     </head>
     <body>
 
-        <%@include file="header.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
                 <div class="col-sm-2 sidenav">
 
                 </div>
                 <div class="col-sm-8 text-left"> 
-                    <h1>Lista de Asistencia</h1>
+                    <h1>Lista Asistencia</h1>
                     <p></p>
-
-                    <div class="container">  
-
-
-
-                        <form class="form-inline" action="BuscarProfesor" method="POST">
-
+                    <hr>
+                    <div class="container">   
+                        <form class="form-inline" action="addAsistencia" method="POST">
                             <div class="form-group">
-                                <label for="idequipo">ID Profesor:</label>
-                                <input  class="form-control" name="id_profesor">
+                                <label for="idAsistencia">ID :</label>
+                                <input  class="form-control" name="idAsistencia">
                             </div>
+                            <div class="form-group">
+                                <label for="idCurso">Curso:</label>
+                                <input  class="form-control" name="idCurso">
+                            </div>
+                            <div class="form-group">
+                                <label for="idEstudiante">Estudiante:</label>
+                                <input  class="form-control" name="idEstudiante">
+                            </div>
+                            <div class="span12">&nbsp;</div>
+                            <div class="form-group">
+                                <label for="fechaC">Fecha Compra:</label>
+                                <input  class="form-control" name="fechaC">
+                            </div>
+                            <div class="form-group">
+                                <label for="prestaso">Ultimo Mant.:</label>
+                                <input  class="form-control" name="mantenimiento">
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo">Estado</label>
+                                <select class="form-control" name="estado">
+                                    <option>Excelente</option>
+                                    <option>Bueno</option>
+                                    <option>Regula</option>
+                                    <option>Malo</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo">Prestado</label>
+                                <select class="form-control" name="prestado">
+                                    <option>True</option>
+                                    <option>False</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo">Categoria</label>
+                                <select class="form-control" name="categoria">
+                                     <%
+                                        if (request.getAttribute("categoria") != null) {
+                                            ArrayList<Categoria> array = (ArrayList<Categoria>) request.getAttribute("categoria");
+                                            for (Categoria a : array) {
+                                    %> 
+                                    <option value="<%=a.getNombre()%>"><%=a.getNombre()%></option> 
+                                    <%      }
+                                        }
+                                    %> 
+                                </select>
+                            </div>
+                                <br>
+                                <br>
+                                
+                            <div class="form-group">
+                                <label for="tipo">Calificación</label>
+                                <select class="form-control" name="calificacion">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+
 
                             <br>
                             <div class="span12">&nbsp;</div>
-
-                            <button type="submit" class="btn btn-default" name="Enviar">Buscar</button>
+                            <button type="submit" class="btn btn-default" name="Enviar">Enviar</button>
                         </form>
-
-
-
-
-
-                        <% if (request.getAttribute("listaProfesorBuscar") != null) {
-                                ArrayList<Profesor> list = (ArrayList<Profesor>) request.getAttribute("listaProfesorBuscar");
-                                if (list != null)
-                                    for (Profesor profesor : list) {
-                        %>
-
-
-
-
-
-                        <div class="form-group">
-                            <label for="nombre_profesor">Nombre:</label>
-                            <input  class="form-control" name="nombre_profesor" readonly="readonly" value="<%=profesor.getNombre_profesor()%>">
-                        </div>
-                        <div class="form-group">
-                            <label for="descripcion">Usuario:</label>
-                            <input  class="form-control" name="descripcion_profesor" readonly="readonly" value="<%=profesor.getUsuario_profesor()%>">
-                        </div>
-                        <div class="form-group">
-                            <label for="descripcion_profesor">Descripcion:</label>
-                            <input  class="form-control" name="descripcion_profesor" readonly="readonly" value="<%=profesor.getDescripcion_profesor()%>">
-                        </div>
-                        <div class="form-group">
-                            <label for="contato_profesor">Contacto:</label>
-                            <input  class="form-control" name="contacto_profesor" readonly="readonly" value="<%=profesor.getContacto_profesor()%>">
-                        </div>
-                        <% }
-                                }
-                        %>
-
-
                     </div>
-
                 </div>
 
             </div>
         </div>
-        <p></p>
+
     
 
     </body>

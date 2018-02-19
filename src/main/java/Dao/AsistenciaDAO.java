@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import Model.Asistencia;
+import Model.Estudiante;
 import java.sql.PreparedStatement;
 import util.DbUtil;
 
@@ -94,11 +95,53 @@ public class AsistenciaDAO {
             st.close();
 
         } catch (SQLException e) {
-            System.out.println("Problemas al obtener la lista de Profesores");
+            System.out.println("Problemas al obtener la lista de Asistencia");
             e.printStackTrace();
         }
 
         return asistencia;
+
+    }
+    
+    
+    public ArrayList<Estudiante> getEstudiantesIDCurso(int a) throws SQLException, URISyntaxException {
+        ArrayList<Estudiante> estudiante = null;
+        boolean result = false;
+        String query = "SELECT estudiante.id_estudiante,estudiante.nombre_estudiante from estudiante where estudiante.id_curso= " + a;
+        Connection connection = DbUtil.getConnection();
+        try {
+
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+           
+            int id_estudiante = 0;
+            String nombre_estudiante = null;
+          
+            while (rs.next()) {
+                if (estudiante == null) {
+                    estudiante = new ArrayList<Estudiante>();
+                }
+                Estudiante registro = new Estudiante();
+
+                id_estudiante = rs.getInt("id_estudiante");
+                registro.setId_estudiante(id_estudiante);
+
+                nombre_estudiante = rs.getString("nombre_estudiante");
+                registro.setNombre_estudiante(nombre_estudiante);
+             
+                estudiante.add(registro);
+
+            }
+         
+            st.close();
+
+        } catch (SQLException e) {
+            System.out.println("Problemas al obtener la lista de Estudiantea");
+            e.printStackTrace();
+        }
+
+        return estudiante;
 
     }
 
