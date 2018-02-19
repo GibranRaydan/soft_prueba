@@ -21,18 +21,19 @@
             <h1 class="col-md-4">Menu Principal</h1>
             <div class="span12">&nbsp;</div>
             <div class="span12">&nbsp;</div>
-            <div class="span12">&nbsp;</div>
-            <div class="span12">&nbsp;</div>
-            <div class="span12">&nbsp;</div>
-            <div class="span12">&nbsp;</div>
+        
 
             <div class="col-md-4">
                 <a class href="##">
                     <button type="button" class="btn btn-primary btn-lg"> Ver Perfil</button>
                 </a>
+                <br>
+                <br>
                 <a  href="##">
                     <button type="button" class="btn btn-success btn-lg">Asistencia Curso</button>
                 </a>
+                <br>
+                <br>
                 <a  href="##">
                     <button   type="button" class="btn btn-danger btn-lg">Notas Curso</button>  
                 </a>
