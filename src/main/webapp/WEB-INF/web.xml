@@ -10,14 +10,7 @@
         <url-pattern>/BuscarProfesor</url-pattern>
     </servlet-mapping>  
     <servlet>
-          <servlet>
-        <servlet-name>ListaAsistencia</servlet-name>
-        <servlet-class>Controller.ListaAsistencia</servlet-class>
-    </servlet>
-     <servlet-mapping>
-        <servlet-name>ListaAsistencia</servlet-name>
-        <url-pattern>/ListaAsistencia</url-pattern>
-    </servlet-mapping>  
+       
     <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>Controller.login</servlet-class>
