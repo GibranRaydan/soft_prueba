@@ -8,6 +8,7 @@ package Controller;
 import Dao.ProfesorDAO;
 import Model.Profesor;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -64,15 +65,28 @@ public class login extends HttpServlet {
             String pass=(String) request.getAttribute("pass");
             ProfesorDAO p=new ProfesorDAO();
             ArrayList<Profesor> profesores=p.getAllProfesores();
-            for(Profesor profe:profesores){
-                if(profe.getUsuario_profesor().equals(usuario) && profe.getPassword_profesor().equals(pass)){
-                    request.getSession().setAttribute("profesor", profe);
-                    response.sendRedirect("menu.jsp");
-                }
-            }
-            request.setAttribute("respuesta", "usuario o password incorrecto");
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-            rd.forward(request, response);
+            response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NewServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet NewServlet at " + usuario + ","+ pass+ "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+//            for(Profesor profe:profesores){
+//                if(profe.getUsuario_profesor().equals(usuario) && profe.getPassword_profesor().equals(pass)){
+//                    request.getSession().setAttribute("profesor", profe);
+//                    response.sendRedirect("menu.jsp");
+//                }
+//            }
+//            request.setAttribute("respuesta", "usuario o password incorrecto");
+//            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
+//            rd.forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
