@@ -27,7 +27,12 @@
                     <hr>
                     
                     <form class="form-inline" action="ListaAsistencia" method="POST">
-                    
+                       <text>
+                            <script>
+                                var f = new Date();
+                                document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+                            </script>
+                       </text>
                     <table class="table table-striped">
                             <tr>
                                 <th>ID Estudiante</th>
