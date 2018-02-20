@@ -11,6 +11,7 @@ import Model.Asistencia;
 import Model.Estudiante;
 import Model.Profesor;
 import java.io.IOException;
+import static java.lang.System.out;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -70,8 +71,20 @@ public class ListaAsistencia extends HttpServlet {
             
             int id_curso= p.getId_curso();
             for (int i=0; i<lista.size();i++) {
+                
                 int id_estudiante = Integer.parseInt(request.getParameter("id_estudiante"));
                 int vino = Integer.parseInt(request.getParameter("opciones"));
+                
+                            out.println("<!DOCTYPE html>");
+                            out.println("<html>");
+                            out.println("<head>");
+                            out.println("<title>Servlet NewServlet</title>");            
+                            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet NewServlet at " + id_estudiante + " " +vino + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+                
                 //String fecha = (String) request.getParameter("fecha");
                 Asistencia asistencia = new Asistencia("12/12/12", vino, id_curso, id_estudiante);
                 obj.addAsistencia(asistencia);
