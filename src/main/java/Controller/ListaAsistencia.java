@@ -5,8 +5,6 @@
  */
 package Controller;
 import Dao.AsistenciaDAO;
-import Dao.EstudianteDAO;
-import Dao.ProfesorDAO;
 import Model.Asistencia;
 import Model.Estudiante;
 import Model.Profesor;
@@ -79,11 +77,16 @@ public class ListaAsistencia extends HttpServlet{
             fecha= (String) request.getParameter("fecha");
             id_estudiante = Integer.parseInt(request.getParameter("id_estudiante"));
             vino = (String) request.getParameter("asistencia");
+            
+            System.out.println(fecha);
+            System.out.println(id_estudiante);
+            System.out.println(vino);
+           
             int aux=1;
             if (vino == "false"){
                 aux=2;
             }
-            Asistencia asistencia = new Asistencia( fecha, aux, p.getId_curso(), id_estudiante);
+            Asistencia asistencia = new Asistencia( fecha, aux, 0 , id_estudiante);
             
             AsistenciaDAO dao = new AsistenciaDAO();
             dao.addAsistencia(asistencia);
