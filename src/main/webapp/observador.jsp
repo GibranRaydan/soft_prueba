@@ -32,6 +32,7 @@
                                             
                                 %>
                                 <input  class="form-control" name="nombre_estudiante" readonly="readonly" value="<%=nombre%>">
+                                <br><br>
                                 <%      
                                     }
                                 %>
