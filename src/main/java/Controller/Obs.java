@@ -55,29 +55,14 @@ public class Obs extends HttpServlet {
             EstudianteDAO ed = new EstudianteDAO();
             Estudiante e = ed.getEstudianteById(idEst);
             ArrayList<Observador> notasObs = od.getObservadorByID(idEst);
-            response.setContentType("text/html;charset=UTF-8");
-            try (PrintWriter out = response.getWriter()) {
-                /* TODO output your page here. You may use following sample code. */
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet NewServlet1</title>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Servlet NewServlet1 at " + (notasObs.get(0)).getCalificaciones() +","+e.getNombre_estudiante()+ "</h1>");
-                out.println("</body>");
-                out.println("</html>");
-            }
+            request.setAttribute("notas", notasObs);
+            request.setAttribute("nombre", e.getNombre_estudiante());
+            request.getRequestDispatcher("observador.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(Obs.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
             Logger.getLogger(Obs.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-//            
-//            request.setAttribute("notas", notasObs);
-//            request.setAttribute("nombre", e.getNombre_estudiante());
-//            request.getRequestDispatcher("observador.jsp").forward(request, response);
-//        
     }
 }
