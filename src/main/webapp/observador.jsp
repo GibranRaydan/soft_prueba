@@ -35,7 +35,7 @@
                                 <%      
                                     }
                                 %>
-                                <table class="table table-inverse">
+                                <table class="table table-active                                      ">
                                     <thead>
                                         <tr>
                                             <th>Calificacion</th>
