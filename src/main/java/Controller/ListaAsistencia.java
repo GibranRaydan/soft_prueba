@@ -68,7 +68,7 @@ public class ListaAsistencia extends HttpServlet {
             ArrayList<Estudiante> estudiantes= ed.getAllEstudiantes();
             for(Estudiante e:estudiantes){
                 String s=""+e.getId_estudiante();
-                if(){
+                if(true){
                     int idEst=Integer.parseInt(request.getParameter(s));
                 }
                 
