@@ -11,7 +11,6 @@ import Model.Asistencia;
 import Model.Estudiante;
 import Model.Profesor;
 import java.io.IOException;
-
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -64,25 +63,27 @@ public class ListaAsistencia extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            EstudianteDAO ed=new EstudianteDAO();
-            ArrayList<Estudiante> estudiantes= ed.getAllEstudiantes();
-            for(Estudiante e:estudiantes){
-                String s=""+e.getId_estudiante();
-                if(true){
-                    int idEst=Integer.parseInt(request.getParameter(s));
-                }
-                
-                
+            
+            AsistenciaDAO obj = new AsistenciaDAO();
+            Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+            ArrayList<Estudiante> lista = (ArrayList<Estudiante>) obj.getEstudiantesIDCurso(p.getId_curso());
+            
+            int id_curso= p.getId_curso();
+            for (int i=0; i<lista.size();i++) {
+                int id_estudiante = Integer.parseInt(request.getParameter("id_estudiante"));
+                int vino = Integer.parseInt(request.getParameter("opciones"));
+                String fecha = (String) request.getParameter("fecha");
+                Asistencia asistencia = new Asistencia(fecha, vino, id_curso, id_estudiante);
+                obj.addAsistencia(asistencia);
+               
             }
-            AsistenciaDAO ad=new AsistenciaDAO();
             
-            
+            response.sendRedirect("ListaAsistencia");
         } catch (SQLException ex) {
             Logger.getLogger(ListaAsistencia.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
             Logger.getLogger(ListaAsistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
 
     }
 
