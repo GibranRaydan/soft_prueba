@@ -35,7 +35,7 @@ public class ObservadorDAO {
             Observador c = new Observador();
             c.setId_estudiante(rs.getInt("id_estudiante"));
             c.setId_profesor(rs.getInt("id_profesor"));
-            c.setCalificaciones(rs.getInt("calificaciones"));
+            c.setCalificaciones(rs.getInt("calificacion"));
             c.setDetalles(rs.getString("detalles"));
             notasObs.add(c);
         }

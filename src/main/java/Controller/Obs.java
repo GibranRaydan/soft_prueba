@@ -50,11 +50,11 @@ public class Obs extends HttpServlet {
             throws ServletException, IOException {
 
         int idEst = Integer.parseInt(request.getParameter("estudiante"));
-        ObservadorDAO od;
         try {
-            od = new ObservadorDAO();
+            ObservadorDAO od = new ObservadorDAO();
             EstudianteDAO ed = new EstudianteDAO();
             Estudiante e = ed.getEstudianteById(idEst);
+            ArrayList<Observador> notasObs = od.getObservadorByID(idEst);
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
                 /* TODO output your page here. You may use following sample code. */
@@ -64,12 +64,10 @@ public class Obs extends HttpServlet {
                 out.println("<title>Servlet NewServlet1</title>");
                 out.println("</head>");
                 out.println("<body>");
-                out.println("<h1>Servlet NewServlet1 at " +e.getNombre_estudiante()+ "</h1>");
+                out.println("<h1>Servlet NewServlet1 at " + (notasObs.get(0)).getCalificaciones() +","+e.getNombre_estudiante()+ "</h1>");
                 out.println("</body>");
                 out.println("</html>");
             }
-//            ArrayList<Observador> notasObs = od.getObservadorByID(idEst);
-
         } catch (SQLException ex) {
             Logger.getLogger(Obs.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
