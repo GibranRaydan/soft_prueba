@@ -21,12 +21,12 @@
     </servlet-mapping>  
     
     <servlet>
-        <servlet-name>Observador</servlet-name>
-        <servlet-class>Controller.Observador</servlet-class>
+        <servlet-name>Obs</servlet-name>
+        <servlet-class>Controller.Obs</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Observador</servlet-name>
-        <url-pattern>/Observador</url-pattern>
+        <servlet-name>Obs</servlet-name>
+        <url-pattern>/Obs</url-pattern>
     </servlet-mapping>
     
     <servlet>
