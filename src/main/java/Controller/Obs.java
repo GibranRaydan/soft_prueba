@@ -10,6 +10,7 @@ import Dao.EstudianteDAO;
 import Dao.ObservadorDAO;
 import Model.Estudiante;
 import Model.Profesor;
+import Model.Observador;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
@@ -25,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author oscarromero
  */
-public class Observador extends HttpServlet {
+public class Obs extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,9 +38,9 @@ public class Observador extends HttpServlet {
             request.setAttribute("respuesta", estudiantes);
             request.getRequestDispatcher("buscObs.jsp").forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(Observador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Obs.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
-            Logger.getLogger(Observador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Obs.class.getName()).log(Level.SEVERE, null, ex);
         }
               
             
@@ -54,14 +55,14 @@ public class Observador extends HttpServlet {
             ObservadorDAO od=new ObservadorDAO();
             EstudianteDAO ed=new EstudianteDAO();
             Estudiante e=ed.getEstudianteById(idEst);
-            ArrayList<Model.Observador> notasObs= od.getObservadorByID(idEst);
+            ArrayList <Observador> notasObs= od.getObservadorByID(idEst);
             request.setAttribute("notas", notasObs);
             request.setAttribute("nombre", e.getNombre_estudiante());
             request.getRequestDispatcher("observador.jsp").forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(Observador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Obs.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
-            Logger.getLogger(Observador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Obs.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

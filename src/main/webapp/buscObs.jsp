@@ -23,8 +23,8 @@
                 <div class="col-sm-8 text-left"> 
                     <h1>Observador</h1>
                     <p></p>
-                    <div class="container">  
-                        <form align="center" action="Observador" method="POST" class="tm-contact-form">                                
+                    <div class="container">
+                        <form align="center" action="Obs" method="POST" class="tm-contact-form">                                
                             <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 tm-form-group-left">
                                 <label align="center" for="estudiante">Estudiante: </label>
                                 <select name="estudiante" class="form-control form-control-lg" id="Seleccion">
@@ -43,11 +43,6 @@
                                 <a class="btn tm-bordered-btn pull-xs-center" href="menu.jsp" role="button">Volver</a>
                             </div>                         
                         </form>
-                        <br>
-                        <br>
-                        <a  href="menu.jsp">
-                            <button type="button" class="btn tm-bordered-btn pull-xs-center">Volver</button>
-                        </a>
                     </div>
 
                 </div>
