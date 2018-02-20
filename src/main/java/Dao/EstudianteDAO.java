@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import Model.Estudiante;
+import Model.Profesor;
 import util.DbUtil;
 
 /**
@@ -26,56 +27,35 @@ public class EstudianteDAO {
         connection = DbUtil.getConnection();
     }
 
-    public ArrayList<Estudiante> getAsistenciaID(int a) throws SQLException, URISyntaxException {
-        ArrayList<Estudiante> estudiante = null;
-        String query = "SELECT * FROM estudiante where id_estudiante= " + a;
-        Connection connection = DbUtil.getConnection();
-        try {
-
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(query);
-
-            int id_estudiante = 0;
-            String nombre_estudiante= null;
-            String contacto_estudiante=null;
-            int id_curso=0;
-
-            while (rs.next()) {
-                if (estudiante == null) {
-                    estudiante = new ArrayList<Estudiante>();
-                }
-                Estudiante registro = new Estudiante(id_estudiante, nombre_estudiante, contacto_estudiante, id_curso);
-
-                id_estudiante = rs.getInt("id_estudiante");
-                registro.setId_estudiante(id_estudiante);
-
-                nombre_estudiante = rs.getString("nombre_estudiante");
-                registro.setNombre_estudiante(nombre_estudiante);
-
-                
-                contacto_estudiante = rs.getString("contacto_estudiante");
-                registro.setContacto_estudiante(contacto_estudiante);
-                
-                id_curso =rs.getInt("id_curso");
-                registro.setId_curso(id_curso);
-                
-                estudiante.add(registro);
-
-            }
-            if (estudiante != null) {
-                for (int i = 0; i < estudiante.size(); i++) {
-                    System.out.println(estudiante.get(i).getId_estudiante()+ " " + estudiante.get(i).getId_curso() + " " + estudiante.get(i).getNombre_estudiante()+ " " + estudiante.get(i).getContacto_estudiante());
-                }
-            }
-            st.close();
-
-        } catch (SQLException e) {
-            System.out.println("Problemas al obtener la lista de Profesores");
-            e.printStackTrace();
+   
+    public ArrayList<Estudiante> getEstudiantesByIDCurso(int id_curso) throws SQLException,URISyntaxException {
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from estudiante where id_curso="+id_curso);
+        while (rs.next()) {
+            Estudiante c = new Estudiante();
+            c.setId_estudiante(rs.getInt("id_estudiante"));
+            c.setNombre_estudiante(rs.getString("nombre_estudiante"));
+            c.setContacto_estudiante(rs.getString("contacto_estudiante"));
+            c.setId_curso(rs.getInt("id_curso"));
+            estudiantes.add(c);
         }
+        return estudiantes;
+    }
+    
+    
 
-        return estudiante;
-
+    public Estudiante getEstudianteById(int idEst) throws SQLException,URISyntaxException{
+        Estudiante e = new Estudiante();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from estudiante where id_estudiante="+idEst);
+        while (rs.next()) {
+            e.setId_estudiante(rs.getInt("id_estudiante"));
+            e.setNombre_estudiante(rs.getString("nombre_estudiante"));
+            e.setContacto_estudiante(rs.getString("contacto_estudiante"));
+            e.setId_curso(rs.getInt("id_curso"));
+        }
+        return e;
     }
 
 }

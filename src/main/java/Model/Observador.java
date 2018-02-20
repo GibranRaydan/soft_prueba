@@ -14,9 +14,9 @@ public class Observador {
     private int id_estudiante;
     private int id_profesor;
     private String detalles;
-    private String calificaciones;
+    private int calificaciones;
 
-    public Observador(int id_estudiante, int id_profesor, String detalles, String calificaciones) {
+    public Observador(int id_estudiante, int id_profesor, String detalles, int calificaciones) {
         this.id_estudiante = id_estudiante;
         this.id_profesor = id_profesor;
         this.detalles = detalles;
@@ -50,11 +50,11 @@ public class Observador {
         this.detalles = detalles;
     }
 
-    public String getCalificaciones() {
+    public int getCalificaciones() {
         return calificaciones;
     }
 
-    public void setCalificaciones(String calificaciones) {
+    public void setCalificaciones(int calificaciones) {
         this.calificaciones = calificaciones;
     }
 

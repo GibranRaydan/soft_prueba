@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Model.Estudiante;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -26,56 +27,19 @@ public class ObservadorDAO {
         connection = DbUtil.getConnection();
     }
 
-    public ArrayList<Observador> getAsistenciaID(int a) throws SQLException, URISyntaxException {
-        ArrayList<Observador> observador = null;
-        boolean result = false;
-        String query = "SELECT * FROM observador where id_profesor= " + a;
-        Connection connection = DbUtil.getConnection();
-        try {
-
-            Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery(query);
-
-            int id_estudiante = 0;
-            int id_profesor = 0;
-            String detalles = null;
-            String calificacion = null;
-
-            while (rs.next()) {
-                if (observador == null) {
-                    observador = new ArrayList<Observador>();
-                }
-                Observador registro = new Observador(id_estudiante, id_profesor, detalles, calificacion);
-
-                id_estudiante = rs.getInt("id_estudiante");
-                registro.setId_estudiante(id_estudiante);
-
-                id_profesor = rs.getInt("id_profesor");
-                registro.setId_profesor(id_profesor);
-
-                detalles = rs.getString("detalles");
-                registro.setDetalles(detalles);
-
-                calificacion = rs.getString("calificacion");
-                registro.setDetalles(detalles);
-
-                observador.add(registro);
-
-            }
-            if (observador != null) {
-                for (int i = 0; i < observador.size(); i++) {
-                    System.out.println(observador.get(i).getId_estudiante() + " " + observador.get(i).getId_profesor() + " " + observador.get(i).getDetalles() + " " + observador.get(i).getCalificaciones());
-                }
-            }
-            st.close();
-
-        } catch (SQLException e) {
-            System.out.println("Problemas al obtener la lista de observador");
-            e.printStackTrace();
+    public ArrayList<Observador> getObservadorByID(int id_estudiante) throws SQLException, URISyntaxException {
+        ArrayList<Observador> notasObs = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from observador where id_estudiante=" + id_estudiante);
+        while (rs.next()) {
+            Observador c = new Observador();
+            c.setId_estudiante(rs.getInt("id_estudiante"));
+            c.setId_profesor(rs.getInt("id_profesor"));
+            c.setCalificaciones(rs.getInt("calificaciones"));
+            c.setDetalles(rs.getString("detalles"));
+            notasObs.add(c);
         }
-
-        return observador;
-
+        return notasObs;
     }
 
 }
