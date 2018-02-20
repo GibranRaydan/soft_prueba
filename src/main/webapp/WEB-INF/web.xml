@@ -24,10 +24,9 @@
         <servlet-name>Observador</servlet-name>
         <servlet-class>Controller.Observador</servlet-class>
     </servlet>
-    
     <servlet-mapping>
-        <servlet-name>Observardor</servlet-name>
-        <url-pattern>/Observardor</url-pattern>
+        <servlet-name>Observador</servlet-name>
+        <url-pattern>/Observador</url-pattern>
     </servlet-mapping>
     
     <servlet>
