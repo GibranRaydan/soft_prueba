@@ -40,7 +40,7 @@
                 </a>
                 <br>
                 <br> 
-                <a  href="#">
+                <a  href="Observador">
                     <button   type="button" class="btn tm-bordered-btn pull-xs-center">Observador</button>  
                 </a>
                 
