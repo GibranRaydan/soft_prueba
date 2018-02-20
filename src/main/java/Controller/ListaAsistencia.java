@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package Controller;
+
 import Dao.AsistenciaDAO;
+import Dao.EstudianteDAO;
 import Model.Asistencia;
 import Model.Estudiante;
 import Model.Profesor;
@@ -19,20 +21,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 /**
  *
  * @author Gibran
  */
-public class ListaAsistencia extends HttpServlet{
-    
-    
+public class ListaAsistencia extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-         try {
-             
-             
+
+        try {
+
             AsistenciaDAO obj = new AsistenciaDAO();
             Profesor p = (Profesor) request.getSession().getAttribute("profesor");
 
@@ -42,15 +43,12 @@ public class ListaAsistencia extends HttpServlet{
 
             request.getRequestDispatcher("addAsistencia.jsp").forward(request, response);
 
-            
-           
-
         } catch (SQLException ex) {
             Logger.getLogger(ListaAsistencia.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
             Logger.getLogger(ListaAsistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+
     }
 
     /**
@@ -64,45 +62,28 @@ public class ListaAsistencia extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         try {
-        AsistenciaDAO obj = new AsistenciaDAO();
-        Profesor p = (Profesor) request.getSession().getAttribute("profesor");
-        ArrayList<Estudiante> lista = (ArrayList<Estudiante>) obj.getEstudiantesIDCurso(p.getId_curso());
-        String fecha= null;
-        int id_estudiante =0;
-        String vino = null;
-        for(int i=0; i<lista.size();i++){           
-            
-            fecha= (String) request.getParameter("fecha");
-            id_estudiante = Integer.parseInt(request.getParameter("id_estudiante"));
-            vino = (String) request.getParameter("asistencia");
-            
-            System.out.println(fecha);
-            System.out.println(id_estudiante);
-            System.out.println(vino);
-           
-            int aux=1;
-            if (vino == "false"){
-                aux=2;
+            EstudianteDAO ed=new EstudianteDAO();
+            ArrayList<Estudiante> estudiantes= ed.getAllEstudiantes();
+            for(Estudiante e:estudiantes){
+                String s=""+e.getId_estudiante();
+                if(){
+                    int idEst=Integer.parseInt(request.getParameter(s));
+                }
+                
+                
             }
-            Asistencia asistencia = new Asistencia( fecha, aux, 0 , id_estudiante);
+            AsistenciaDAO ad=new AsistenciaDAO();
             
-            AsistenciaDAO dao = new AsistenciaDAO();
-            dao.addAsistencia(asistencia);
-          
-        }
-        
-        
+            
         } catch (SQLException ex) {
             Logger.getLogger(ListaAsistencia.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
             Logger.getLogger(ListaAsistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
-   
-        
+
     }
 
     /**
@@ -115,7 +96,4 @@ public class ListaAsistencia extends HttpServlet{
         return "Short description";
     }// </editor-fold>
 
-    
-    
-    
 }

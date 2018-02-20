@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import Model.Estudiante;
-import Model.Profesor;
 import util.DbUtil;
 
 /**
@@ -58,4 +57,21 @@ public class EstudianteDAO {
         return e;
     }
 
+    public ArrayList<Estudiante> getAllEstudiantes() throws SQLException {
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from estudiante");
+        while (rs.next()) {
+            Estudiante c = new Estudiante();
+            c.setId_estudiante(rs.getInt("id_estudiante"));
+            c.setId_curso(rs.getInt("id_curso"));
+            c.setNombre_estudiante(rs.getString("nombre_estudiante"));
+            c.setContacto_estudiante(rs.getString("contacto_estudiante"));
+            estudiantes.add(c);
+        }
+        return estudiantes;
+    }
+    
+    
+    
 }
