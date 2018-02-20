@@ -72,8 +72,8 @@ public class ListaAsistencia extends HttpServlet {
             for (int i=0; i<lista.size();i++) {
                 int id_estudiante = Integer.parseInt(request.getParameter("id_estudiante"));
                 int vino = Integer.parseInt(request.getParameter("opciones"));
-                String fecha = (String) request.getParameter("fecha");
-                Asistencia asistencia = new Asistencia(fecha, vino, id_curso, id_estudiante);
+                //String fecha = (String) request.getParameter("fecha");
+                Asistencia asistencia = new Asistencia("12/12/12", vino, id_curso, id_estudiante);
                 obj.addAsistencia(asistencia);
                
             }
