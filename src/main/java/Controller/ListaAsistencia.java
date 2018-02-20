@@ -70,33 +70,17 @@ public class ListaAsistencia extends HttpServlet {
             ArrayList<Estudiante> lista = (ArrayList<Estudiante>) obj.getEstudiantesIDCurso(p.getId_curso());
             
             int id_curso= p.getId_curso();
-            out.println("<!DOCTYPE html>");
-                            out.println("<html>");
-                            out.println("<head>");
-                            out.println("<title>Servlet NewServlet</title>");            
-                            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet NewServlet at " + id_curso + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+           
             
             for (int i=0; i<lista.size();i++) {
                 
-                int id_estudiante = Integer.parseInt(request.getParameter("id_estudiante"));
-                int vino = Integer.parseInt(request.getParameter("opciones"));
+               // int id_estudiante = Integer.parseInt(request.getParameter("id_estudiante"));
+               // int vino = Integer.parseInt(request.getParameter("opciones"));
                 
-                            out.println("<!DOCTYPE html>");
-                            out.println("<html>");
-                            out.println("<head>");
-                            out.println("<title>Servlet NewServlet</title>");            
-                            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet NewServlet at " + id_estudiante + " " +vino + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+             
                 
                 //String fecha = (String) request.getParameter("fecha");
-                Asistencia asistencia = new Asistencia("12/12/12", vino, id_curso, id_estudiante);
+                Asistencia asistencia = new Asistencia("12/12/12", 1, id_curso, 1 );
                 obj.addAsistencia(asistencia);
                
             }
