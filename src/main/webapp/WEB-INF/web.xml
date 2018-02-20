@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-  
+  <display-name>Java Servlet JSON</display-name>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+ 
+    <servlet>
+        <servlet-name>MostrarNota</servlet-name>            
+        <servlet-class>Controller.MostrarNota</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MostrarNota</servlet-name>
+        <url-pattern>/MostrarNota</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>BuscarProfesor</servlet-name>
         <servlet-class>Controller.BuscarProfesor</servlet-class>
