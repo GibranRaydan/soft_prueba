@@ -21,6 +21,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
 
 /**
  *
@@ -65,27 +67,20 @@ public class ListaAsistencia extends HttpServlet {
 
         try {
             
-            AsistenciaDAO obj = new AsistenciaDAO();
-            Profesor p = (Profesor) request.getSession().getAttribute("profesor");
-            ArrayList<Estudiante> lista = (ArrayList<Estudiante>) obj.getEstudiantesIDCurso(p.getId_curso());
+         String data = request.getParameter("data");
+         JSONArray array = new JSONArray(data);
+         String es = (String) array.get(0);
+         Asistencia asistencia = new Asistencia(es, 0, 0, 0);
+         AsistenciaDAO dao = new AsistenciaDAO();
+         
+         dao.addAsistencia(asistencia);
+         
             
-            int id_curso= p.getId_curso();
-           
-            
-            for (int i=0; i<lista.size();i++) {
-                
-               // int id_estudiante = Integer.parseInt(request.getParameter("id_estudiante"));
-               // int vino = Integer.parseInt(request.getParameter("opciones"));
-                
-             
-                
-                //String fecha = (String) request.getParameter("fecha");
-                Asistencia asistencia = new Asistencia("12/12/12", 1, id_curso, 1 );
-                obj.addAsistencia(asistencia);
-               
-            }
-            
-            response.sendRedirect("ListaAsistencia");
+         response.sendRedirect("ListaAsistencia");
+       
+          
+        } catch (JSONException ex) {
+            Logger.getLogger(ListaAsistencia.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ListaAsistencia.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {

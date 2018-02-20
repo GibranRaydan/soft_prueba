@@ -14,6 +14,50 @@
         <link rel="stylesheet" href="css/templatemo-style.css">                    <!-- Templatemo style -->
 
     </head>
+    <script>
+
+                            function tableToJSON() {
+                                let headers = document.querySelectorAll('th');
+                                let rows = document.querySelectorAll('tbody tr');
+                                let json = [];
+
+                                [].forEach.call(rows, (row, i) => {
+                                    let cells = row.querySelectorAll('td');
+                                    let data = {};
+                                    cells.forEach.call(cells, (cell, x) => {
+                                        let header = headers[x].textContent;
+                                        let content = cell.textContent;
+                                        data[header] = content;
+                                    });
+                                    json.push(data);
+                                });
+
+                                return json;
+                            }
+
+                            const form = document.getElementById('#form');
+
+
+                            form.addEventListener('submit', handleFormSubmit);
+
+                            function handleFormSubmit(e) {
+                                e.preventSubmit(); // evitamos el submit del fofrm
+                                let xhr = new XMLHttpRequest();
+                                xhr.open('POST', '/ListaAsistencia');
+                                xhr.onload = function () {
+                                    if (xhr.readyState === 4) {
+                                        if (xhr.status === 200) {
+                                            resetTable();
+                                        } else {
+                                            // ocurrió un error, manejarlo
+                                        }
+                                    }
+                                }
+                                xhr.send('data=' + JSON.stringify(
+                                        tableToJSON('tbl-people')
+                                        ));
+                            }
+                    </script>
     <body>
 
         <div class="container-fluid text-center">    
@@ -25,50 +69,63 @@
                     <h1>Lista Asistencia</h1>
                     <p></p>
                     <hr>
-                    
+
                     <form class="form-inline" action="ListaAsistencia" method="POST">
                         <text name="fecha">
-                            <script>
-                                var f = new Date();
-                                document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
-                            </script>
-                       </text>
-                    <table class="table table-striped">
-                            <tr>
-                                <th>ID Estudiante</th>
-                                <th>Nombre Estudiante</th>
-                            
-                            </tr>
-                            <% if (request.getAttribute("listaCurso") != null) {
-                                    ArrayList<Estudiante> list = (ArrayList<Estudiante>) request.getAttribute("listaCurso");
-                                    if (list != null)
-                                        for (Estudiante estudiante : list) {
-                            %>
-                            <tr>
-                                <td name="id_estudiante"><%=estudiante.getId_estudiante()%></td>
-                                <td><%=estudiante.getNombre_estudiante()%></td>
-                            
+                        <script>
+                            var f = new Date();
+                            document.write(f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear());
+                        </script>
+                        </text>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID Estudiante</th>
+                                    <th>Nombre Estudiante</th>
 
-                                <td>
-                                    <SELECT name="opciones">
-                                        <OPTION value="1">Presente</OPTION>
-                                        <OPTION value="2">Ausente</OPTION>
-                                    </SELECT>
-                                </td>
-                            </tr>
-                            <% }
-                                }
-                            %>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <% if (request.getAttribute("listaCurso") != null) {
+                                        ArrayList<Estudiante> list = (ArrayList<Estudiante>) request.getAttribute("listaCurso");
+                                        if (list != null)
+                                            for (Estudiante estudiante : list) {
+                                %>
+                                <tr>
+
+                                    <td name="id_estudiante"><%=estudiante.getId_estudiante()%></td>
+                                    <td><%=estudiante.getNombre_estudiante()%></td>
+
+
+                                    <td>
+                                        <SELECT name="opciones">
+                                            <OPTION value="1">Presente</OPTION>
+                                            <OPTION value="2">Ausente</OPTION>
+                                        </SELECT>
+                                    </td>
+                                </tr>
+                                <% }
+                                    }
+                                %>
+
+                            </tbody>
                         </table>
                         <button type="submit" class="btn btn-default" name="Enviar">Enviar</button>
                         <a class="btn tm-bordered-btn pull-xs-center" href="menu.jsp" role="button">Volver</a>
-                        </form>
+
+                       
+                    </form>
+                                
+                    
+
+
                 </div>
 
             </div>
         </div>
 
-    
+
 
     </body>
 </html>
