@@ -1,4 +1,4 @@
-<%@page import="Model.Observador"%>
+<%@page import="Model.Estudiante"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
