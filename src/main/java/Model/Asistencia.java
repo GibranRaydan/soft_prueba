@@ -11,14 +11,14 @@ package Model;
  */
 public class Asistencia {
 
-    private int id_asistencia;
+  
     private String fecha;
     private int vino;
     private int id_curso;
     private int id_estudiante;
 
-    public Asistencia(int id_asistencia, String fecha, int vino, int id_curso, int id_estudiante) {
-        this.id_asistencia = id_asistencia;
+    public Asistencia( String fecha, int vino, int id_curso, int id_estudiante) {
+        
         this.fecha = fecha;
         this.vino = vino;
         this.id_curso = id_curso;
@@ -28,13 +28,7 @@ public class Asistencia {
     public Asistencia() {
     }
 
-    public int getId_asistencia() {
-        return id_asistencia;
-    }
-
-    public void setId_asistencia(int id_asistencia) {
-        this.id_asistencia = id_asistencia;
-    }
+    
 
     public String getFecha() {
         return fecha;

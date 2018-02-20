@@ -67,6 +67,35 @@ public class ListaAsistencia extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        try {
+        AsistenciaDAO obj = new AsistenciaDAO();
+        Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+        ArrayList<Estudiante> lista = (ArrayList<Estudiante>) obj.getEstudiantesIDCurso(p.getId_curso());
+        String fecha= null;
+        int id_estudiante =0;
+        String vino = null;
+        for(int i=0; i<lista.size();i++){           
+            
+            fecha= (String) request.getParameter("fecha");
+            id_estudiante = Integer.parseInt(request.getParameter("id_estudiante"));
+            vino = (String) request.getParameter("asistencia");
+            int aux=1;
+            if (vino == "false"){
+                aux=2;
+            }
+            Asistencia asistencia = new Asistencia( fecha, aux, p.getId_curso(), id_estudiante);
+            
+            AsistenciaDAO dao = new AsistenciaDAO();
+            dao.addAsistencia(asistencia);
+          
+        }
+        
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(ListaAsistencia.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(ListaAsistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
    

@@ -67,10 +67,9 @@ public class AsistenciaDAO {
                 if (asistencia == null) {
                     asistencia = new ArrayList<Asistencia>();
                 }
-                Asistencia registro = new Asistencia(id_asistencia, fecha, vino, id_curso, id_estudiante);
+                Asistencia registro = new Asistencia( fecha, vino, id_curso, id_estudiante);
 
-                id_asistencia = rs.getInt("id_asistencia");
-                registro.setId_asistencia(id_asistencia);
+            
 
                 id_curso = rs.getInt("id_curso");
                 registro.setId_curso(id_curso);
@@ -89,7 +88,7 @@ public class AsistenciaDAO {
             }
             if (asistencia != null) {
                 for (int i = 0; i < asistencia.size(); i++) {
-                    System.out.println(asistencia.get(i).getId_asistencia() + " " + asistencia.get(i).getId_curso() + " " + asistencia.get(i).getId_estudiante() + " " + asistencia.get(i).getFecha() + " " + asistencia.get(i).getVino());
+                    System.out.println( asistencia.get(i).getId_curso() + " " + asistencia.get(i).getId_estudiante() + " " + asistencia.get(i).getFecha() + " " + asistencia.get(i).getVino());
                 }
             }
             st.close();

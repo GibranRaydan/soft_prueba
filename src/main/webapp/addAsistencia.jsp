@@ -27,7 +27,7 @@
                     <hr>
                     
                     <form class="form-inline" action="ListaAsistencia" method="POST">
-                       <text>
+                        <text name="fecha">
                             <script>
                                 var f = new Date();
                                 document.write(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
@@ -45,7 +45,7 @@
                                         for (Estudiante estudiante : list) {
                             %>
                             <tr>
-                                <td><%=estudiante.getId_estudiante()%></td>
+                                <td name="id_estudiante"><%=estudiante.getId_estudiante()%></td>
                                 <td><%=estudiante.getNombre_estudiante()%></td>
                             
 
