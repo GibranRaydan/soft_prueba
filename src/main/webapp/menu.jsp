@@ -35,7 +35,7 @@
                 </a>
                 <br>
                 <br>
-                <a  href="##">
+                <a  href="MostrarNota">
                     <button   type="button" class="btn tm-bordered-btn pull-xs-center">Notas Curso</button>  
                 </a>
                 <br>
