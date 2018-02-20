@@ -50,7 +50,10 @@
                             
 
                                 <td>
-                                    <input type="checkbox" name="asistencia" value="<%=estudiante.getId_estudiante()%>" >
+                                    <SELECT name="opciones">
+                                        <OPTION value="1">Presente</OPTION>
+                                        <OPTION value="2">Ausente</OPTION>
+                                    </SELECT>
                                 </td>
                             </tr>
                             <% }
