@@ -5,8 +5,7 @@
  */
 package Dao;
 
-import Model.Estudiante;
-import Model.Observador;
+
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.ResultSet;
