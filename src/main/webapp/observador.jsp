@@ -28,7 +28,7 @@
                                 <label for="nombre_estudiante">Estudiante:</label>
                                 <%
                                     if (request.getAttribute("nombre") != null) {
-                                        String nombre = request.getAttribute("nombre");
+                                        String nombre = (String) request.getAttribute("nombre");
                                             
                                 %>
                                 <input  class="form-control" name="nombre_estudiante" readonly="readonly" value="<%=nombre%>">
