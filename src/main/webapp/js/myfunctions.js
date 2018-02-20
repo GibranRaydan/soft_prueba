@@ -3,7 +3,7 @@ $(document).ready(function () {
         url:'https://ingsoftwusa.herokuapp.com/myApp/MostrarNota',
         dataType: "json",
         success: function (personas) {
-            var personas = [personas];
+            //var personas = [personas];
             console.log(personas);
             var personasHTML = $.map(personas, function (persona, index) {
                 var listItem = $('<tr></tr>');
