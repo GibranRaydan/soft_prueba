@@ -33,7 +33,7 @@
                                             ArrayList<Estudiante> array = (ArrayList<Estudiante>) request.getAttribute("respuesta");
                                             for (Estudiante t : array) {
                                     %>
-                                    <option value="<%=t.getId_Estudiante()%>"><%=t.getNombre_Estudiante()%></option>
+                                    <option value="<%=t.getId_estudiante()%>"><%=t.getNombre_estudiante()%></option>
                                     <%      }
                                         }
                                     %>
