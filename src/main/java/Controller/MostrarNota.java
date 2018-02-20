@@ -44,11 +44,8 @@ public class MostrarNota extends HttpServlet {
             JSONObject obj = new JSONObject();         
         try {         
             obj.put("estudiante", "Laura Sofia");
-            obj.put("estudiante", "Laura ");
-            obj.put("tema", "Lectoescritura");
             obj.put("tema", "Lectoescritura");
             obj.put("nota", "Excelente");
-            obj.put("nota", "Malo");
 
         } catch (JSONException ex) {
             Logger.getLogger(MostrarNota.class.getName()).log(Level.SEVERE, null, ex);
