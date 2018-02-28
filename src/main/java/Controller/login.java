@@ -68,13 +68,16 @@ public class login extends HttpServlet {
             for (Profesor profe : profesores) {
                 if (profe.getUsuario_profesor().equals(usuario) && profe.getPassword_profesor().equals(pass)) {
                     request.getSession().setAttribute("profesor", profe);
-                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/menu.jsp");
-                    rd.forward(request, response);
+                    //RequestDispatcher rd = getServletContext().getRequestDispatcher("/menu.jsp");
+                    //rd.forward(request, response);
+                    response.sendRedirect(request.getContextPath() + "/index.jsp");
                 }
             }
             request.setAttribute("respuesta", "usuario o password incorrecto");
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
             rd.forward(request, response);
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
