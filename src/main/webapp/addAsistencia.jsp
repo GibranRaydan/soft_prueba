@@ -20,13 +20,13 @@
         var http =  new XMLHttpRequest();
         var url = "ListaAsistencia";
         
-       var params = "fecha="+document.getElementById('fecha')+"id_estudiante="+document.getElementById('id_estudiante')+
+        var params = "fecha="+document.getElementById('fecha')+"id_estudiante="+document.getElementById('id_estudiante')+
           "nombre_estudiante="+document.getElementById('nombre_estudiante')+"vino="+document.getElementById("opciones");
        
         http.open("POST", url, true);
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         http.send(params);
-    }
+        }
         
     </script>
     </head>
@@ -84,7 +84,7 @@
 
                             </tbody>
                         </table>
-                                <button type="button" onClick="sendData()">Guardar</button> 
+                                <button type="button" onclick="sendData()">Guardar</button> 
 
                        
                     </form>
