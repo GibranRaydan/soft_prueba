@@ -19,7 +19,7 @@
         function sendData(){
         console.log('ENTRA');    
         var http =  new XMLHttpRequest();
-        var url = "ListaAsistencia";
+        var url = "./ListaAsistencia";
         
         var params = "fecha="+document.getElementById('fecha')+"id_estudiante="+document.getElementById('id_estudiante')+
           "nombre_estudiante="+document.getElementById('nombre_estudiante')+"vino="+document.getElementById("opciones");
