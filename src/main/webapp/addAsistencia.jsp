@@ -15,49 +15,17 @@
 
     </head>
     <script>
-
-                            function tableToJSON() {
-                                let headers = document.querySelectorAll('th');
-                                let rows = document.querySelectorAll('tbody tr');
-                                let json = [];
-
-                                [].forEach.call(rows, (row, i) => {
-                                    let cells = row.querySelectorAll('td');
-                                    let data = {};
-                                    cells.forEach.call(cells, (cell, x) => {
-                                        let header = headers[x].textContent;
-                                        let content = cell.textContent;
-                                        data[header] = content;
-                                    });
-                                    json.push(data);
-                                });
-
-                                return json;
-                            }
-
-                            const form = document.getElementById('#form');
-
-
-                            form.addEventListener('submit', handleFormSubmit);
-
-                            function handleFormSubmit(e) {
-                                e.preventSubmit(); // evitamos el submit del fofrm
-                                let xhr = new XMLHttpRequest();
-                                xhr.open('POST', '/ListaAsistencia');
-                                xhr.onload = function () {
-                                    if (xhr.readyState === 4) {
-                                        if (xhr.status === 200) {
-                                            resetTable();
-                                        } else {
-                                            // ocurrió un error, manejarlo
-                                        }
-                                    }
-                                }
-                                xhr.send('data=' + JSON.stringify(
-                                        tableToJSON('tbl-people')
-                                        ));
-                            }
-                    </script>
+        var http =  new XMLHttpRequest();
+        var url = "ListaAsistencia";
+        
+       var params = "fecha="+document.getElementById('fecha')+"id_estudiante="+document.getElementById('id_estudiante')+
+          "nombre_estudiante="+document.getElementById('nombre_estudiante')+"vino="+document.getElementById("opciones");
+       
+        http.open("POST", url, true);
+        http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        http.send(params);
+        
+    </script>
     <body>
 
         <div class="container-fluid text-center">    
@@ -70,8 +38,8 @@
                     <p></p>
                     <hr>
 
-                    <form class="form-inline" action="ListaAsistencia" method="POST">
-                        <text name="fecha">
+                    <form class="form-inline" method="POST">
+                        <text id="fecha">
                         <script>
                             var f = new Date();
                             document.write(f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear());
@@ -94,12 +62,12 @@
                                 %>
                                 <tr>
 
-                                    <td name="id_estudiante"><%=estudiante.getId_estudiante()%></td>
-                                    <td><%=estudiante.getNombre_estudiante()%></td>
+                                    <td id="id_estudiante" ><%=estudiante.getId_estudiante()%></td>
+                                    <td id="nombre_estudiante"><%=estudiante.getNombre_estudiante()%></td>
 
 
                                     <td>
-                                        <SELECT name="opciones">
+                                        <SELECT id="opciones">
                                             <OPTION value="1">Presente</OPTION>
                                             <OPTION value="2">Ausente</OPTION>
                                         </SELECT>
@@ -111,8 +79,7 @@
 
                             </tbody>
                         </table>
-                        <button type="submit" class="btn btn-default" name="Enviar">Enviar</button>
-                        <a class="btn tm-bordered-btn pull-xs-center" href="menu.jsp" role="button">Volver</a>
+                                <button type="button" onclick="SendData()">Guardar</button> 
 
                        
                     </form>

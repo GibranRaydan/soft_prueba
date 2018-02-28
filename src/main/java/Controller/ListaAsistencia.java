@@ -64,29 +64,22 @@ public class ListaAsistencia extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         try {
-            
-         String data = request.getParameter("data");
-         JSONArray array = new JSONArray(data);
-         String es = (String) array.get(0);
-         Asistencia asistencia = new Asistencia(es, 0, 0, 0);
-         AsistenciaDAO dao = new AsistenciaDAO();
-         
-         dao.addAsistencia(asistencia);
-         
-            
-         response.sendRedirect("ListaAsistencia");
-       
-          
-        } catch (JSONException ex) {
-            Logger.getLogger(ListaAsistencia.class.getName()).log(Level.SEVERE, null, ex);
+        String fecha = request.getParameter("fecha");
+        int id_estudiante  =  Integer.parseInt(request.getParameter("id_estudiante"));
+        String nombre_estudiante = request.getParameter("nombre_estudiante");
+        int vino = Integer.parseInt(request.getParameter("vino"));
+        
+        Asistencia asistencia = new Asistencia(fecha, vino, 1, id_estudiante);
+        AsistenciaDAO dao = new AsistenciaDAO();
+        dao.addAsistencia(asistencia);
+        
         } catch (SQLException ex) {
             Logger.getLogger(ListaAsistencia.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
             Logger.getLogger(ListaAsistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
 
     /**
