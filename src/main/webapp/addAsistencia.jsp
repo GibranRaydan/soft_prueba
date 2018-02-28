@@ -15,6 +15,7 @@
 
     </head>
     <script>
+        function sendData(){
         var http =  new XMLHttpRequest();
         var url = "ListaAsistencia";
         
@@ -24,6 +25,7 @@
         http.open("POST", url, true);
         http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         http.send(params);
+    }
         
     </script>
     <body>
