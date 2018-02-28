@@ -17,6 +17,7 @@
         
     <script>
         function sendData(){
+        console.log('ENTRA');    
         var http =  new XMLHttpRequest();
         var url = "ListaAsistencia";
         
