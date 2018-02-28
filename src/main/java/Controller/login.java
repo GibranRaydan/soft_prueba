@@ -70,7 +70,7 @@ public class login extends HttpServlet {
                     request.getSession().setAttribute("profesor", profe);
                     //RequestDispatcher rd = getServletContext().getRequestDispatcher("/menu.jsp");
                     //rd.forward(request, response);
-                    response.sendRedirect(request.getContextPath() + "/index.jsp");
+                    response.sendRedirect(request.getContextPath() + "/menu.jsp");
                 }
             }
             request.setAttribute("respuesta", "usuario o password incorrecto");
