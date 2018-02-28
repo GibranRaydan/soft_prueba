@@ -81,7 +81,7 @@
 
                             </tbody>
                         </table>
-                                <button type="button" onclick="SendData()">Guardar</button> 
+                                <button type="button" onclick="sendData()">Guardar</button> 
 
                        
                     </form>
