@@ -13,7 +13,8 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">                       <!-- Bootstrap style, http://v4-alpha.getbootstrap.com/ -->
         <link rel="stylesheet" href="css/templatemo-style.css">                    <!-- Templatemo style -->
 
-    </head>
+        
+        
     <script>
         function sendData(){
         var http =  new XMLHttpRequest();
@@ -28,6 +29,8 @@
     }
         
     </script>
+    </head>
+  
     <body>
 
         <div class="container-fluid text-center">    
@@ -81,7 +84,7 @@
 
                             </tbody>
                         </table>
-                                <button type="button" onclick="sendData()">Guardar</button> 
+                                <button type="button" onClick="sendData()">Guardar</button> 
 
                        
                     </form>
